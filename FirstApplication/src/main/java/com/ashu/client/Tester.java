@@ -9,12 +9,17 @@ public class Tester {
 		
 		StudentDAO dao = new StudentDAOImpl();
 		
-		Student student = new Student();
-		student.setSid(11);
-		student.setSname("Ram");
-		student.setGender("Male");
-		student.setMarks(70);
+//		Student student = new Student();
+//		student.setSid(12);
+//		student.setSname("Ashu");
+//		student.setGender("Male");
+//		student.setMarks(90);
+//		
+//		dao.saveStudent(student);
 		
-		dao.saveStudent(student);
+		
+		Student stud = dao.loadStudent(12);
+		System.out.println();
+		System.out.println(stud);
 	}
 }

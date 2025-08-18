@@ -32,7 +32,7 @@ public class StudentDAOImpl implements StudentDAO {
 		Transaction t = session.beginTransaction();
 		
 		try {
-			session.persist(student); // Use persist instead of save for JPA entities
+			session.persist(student); 
 			System.out.println("Session object is persisted in Database.");
 			t.commit();
 		}catch(Exception e) {
@@ -42,7 +42,14 @@ public class StudentDAOImpl implements StudentDAO {
 		}
 		finally {
 			session.close();
-			// factory.close(); // Do not close factory here; it should be closed once for the whole application, not per operation
 		}
+	}
+
+	
+	@Override
+	public Student loadStudent(int sid) {
+		Session session = factory.openSession();
+		Student stud = session.find(Student.class, sid); // Use load for lazy loading
+		return stud;
 	}
 }

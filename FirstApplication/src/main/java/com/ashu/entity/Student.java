@@ -31,4 +31,11 @@ public class Student {
 	}
 	
 	
+	
+	@Override
+	public String toString() {
+		return "Student [sid=" + sid + ", sname=" + sname + ", gender=" + gender + ", marks=" + marks + "]";
+	}
+	
+
 }
