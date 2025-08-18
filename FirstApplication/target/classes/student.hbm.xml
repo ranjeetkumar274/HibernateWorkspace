@@ -4,7 +4,7 @@
     "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
     
     <hibernate-mapping>
-    <class name="cpm.ashu.entity.Student" table="TBL_STUDENT">
+    <class name="com.ashu.entity.Student" table="TBL_STUDENT">
         <id name="sid" column="SID">
         </id>
         <property name="sname" column="SNAME"/>
@@ -12,7 +12,3 @@
         <property name="marks" column="MARKS"/>
         </class>
     </hibernate-mapping>
-    
-    
-    
-    
