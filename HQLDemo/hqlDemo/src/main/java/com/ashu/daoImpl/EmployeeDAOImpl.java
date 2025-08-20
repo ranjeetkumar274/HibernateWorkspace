@@ -1,5 +1,8 @@
 package com.ashu.daoImpl;
 
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -42,6 +45,48 @@ public EmployeeDAOImpl() {
 			session.close();
 		}
 		System.out.println("Employee saved: " + employee.getFirstName()+ " " + employee.getLastName());
+	}
+
+	@Override
+	public List<Employee> getAllEmployees() {
+		Session session = factory.openSession();
+		List<Employee> employees = session.createQuery("from Employee", Employee.class).list();
+		return employees;
+	}
+
+	@Override
+	public Employee loadEmployee(int id) {
+		Session session = factory.openSession();
+		Query<Employee> query = (Query<Employee>) session.createQuery("from Employee e where e.id = ?");
+		query.setParameter(1, id);
+		Employee emp = query.uniqueResult();
+		session.close();
+		return emp;
+		
+	}
+
+	@Override
+	public void updateEmployee(Employee employee) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void deleteEmployee(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<Employee> getEmployeesByDepartmentId(int departmentId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteAllEmployeesByDepartmentId(int departmentId) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 }
