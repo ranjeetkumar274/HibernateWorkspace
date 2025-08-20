@@ -108,7 +108,7 @@
         <configuration>
           <mainClass>com.ashu.client.Tester</mainClass>
         </configuration>
-      </plugin>
+      </plugin>	
       
       
       </plugins>
