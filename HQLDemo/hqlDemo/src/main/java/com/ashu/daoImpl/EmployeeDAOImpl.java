@@ -61,31 +61,44 @@ public EmployeeDAOImpl() {
 		query.setParameter(1, id);
 		Employee emp = query.uniqueResult();
 		session.close();
-		return emp;
-		
+		return emp;	
 	}
 
 	@Override
 	public void updateEmployee(Employee employee) {
-		// TODO Auto-generated method stub
+		Session session = factory.openSession();
+		Transaction t = session.beginTransaction();
+		try {
+			Query query = session.createQuery("update Employee e set e.firstName = :firstName, e.lastName = :lastName where e.id = :id");
+			query.setParameter(1, employee.getFirstName());
+			query.setParameter(2, employee.getLastName());
+		}catch(Exception e) {
+			t.rollback();
+			System.out.println("Issue in updating employee.");
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
 		
 	}
 
 	@Override
 	public void deleteEmployee(int id) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public List<Employee> getEmployeesByDepartmentId(int departmentId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void deleteAllEmployeesByDepartmentId(int departmentId) {
-		// TODO Auto-generated method stub
+		Session session = factory.openSession();
+		Transaction t = session.beginTransaction();
+		try {
+			Query query = session.createQuery("delete Employee e where e.id = :?");
+			query.setParameter("id", id);
+			query.executeUpdate();
+			t.commit();
+			System.out.println("Employee with ID " + id + " deleted successfully.");
+		} catch(Exception e) {
+			t.rollback();
+			System.out.println("Issue in deleting employee.");
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
 		
 	}
 	

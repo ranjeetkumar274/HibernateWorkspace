@@ -11,8 +11,6 @@ public interface EmployeeDAO {
 	Employee loadEmployee(int id);
 	void updateEmployee(Employee employee);
 	void deleteEmployee(int id);
-	List<Employee> getEmployeesByDepartmentId(int departmentId);
-	void deleteAllEmployeesByDepartmentId(int departmentId);
 	
 	
 }
