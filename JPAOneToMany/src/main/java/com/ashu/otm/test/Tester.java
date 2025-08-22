@@ -20,12 +20,11 @@ public class Tester {
 	        return imageBytes;
 	    }
 	}
-
 	public static void main(String[] args) throws Exception {
 		
 		CategoryDAO categoryDAO = new CategoryDAOImpl();
-		
-		// Test saving a category
+
+//		// Test saving a category
 		CategoryEntity categoryEntity = new CategoryEntity();
 		categoryEntity.setCatgId(1401);
 		categoryEntity.setCatgName("Electronics");
@@ -53,7 +52,34 @@ public class Tester {
 		List <ProductEntity> lstOfProducts = Arrays.asList(product1, product2, product3);
 		categoryEntity.setProducts(lstOfProducts);
 		categoryDAO.saveCategory(categoryEntity);
+	
+//		  CategoryEntity fetchedCategory = categoryDAO.fetchCategory(1401);
+//		  
+//		  System.out.println("Fetched Category Name: " +
+//		  fetchedCategory.getCatgName());
+//		  
+//		  List<ProductEntity> products = fetchedCategory.getProducts();
+//		  
+//		  ProductEntity prod = products.get(0); System.out.println("Product ID: " + prod.getProdId()); System.out.println("Product Name: " + prod.getProdName());
+//		  byte[] imageBytes = prod.getProdImage(); 
+//		  
+//		  try {
+//			  File file = new File(
+//				  "C:\\Users\\ashuy\\Desktop\\Books\\HibernatWorkspace\\testImages\\retrieved_smartphone1.jpg"
+//				  );
+//		  FileOutputStream fos = new FileOutputStream(file); fos.write(imageBytes);
+//		  System.out.println("Image saved to: " + file.getAbsolutePath());
+//		  }
+//		  catch (Exception e) {
+//			  e.printStackTrace();
+//			  System.out.println("Error saving image: " + e.getMessage());
+//		  }
+		
+		// Test removing a category
+//		categoryDAO.removeCategory(1401);
+//		System.out.println("Category removed successfully!");
 		
 		
-	}
+		}
+		 
 }

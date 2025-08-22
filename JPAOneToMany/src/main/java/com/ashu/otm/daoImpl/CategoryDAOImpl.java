@@ -32,15 +32,9 @@ public class CategoryDAOImpl implements CategoryDAO{
 	@Override
 	public CategoryEntity fetchCategory(Integer catgId) {
 		EntityManager em = factory.createEntityManager();
-		try {
+		
 			CategoryEntity category = em.find(CategoryEntity.class, catgId);
 			return category;
-		} catch (Exception e) {
-			e.printStackTrace();
-			System.out.println("Error fetching category: " + e.getMessage());
-		} finally {
-			em.close();}
-		return null;
 	}
 
 	@Override
